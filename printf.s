@@ -4,6 +4,7 @@ SYS_EXIT    equ 60
 STDOUT      equ 1
 STDIN       equ 0
 
+global printf
 
 section .data
     input   db "{ %s, %d, %c, %%}", 0xA, 0
@@ -202,7 +203,7 @@ print_char:
     push r11
     push rax
 
-    mov rax, SYS_WRITE       ; номер системного вызова write
+    mov rax, SYS_WRITE    ; номер системного вызова write
     mov rdi, STDOUT       ; дескриптор stdout
     mov rsi, rsp
     mov rdx, 1
